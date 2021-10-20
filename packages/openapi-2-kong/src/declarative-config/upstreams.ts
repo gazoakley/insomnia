@@ -20,7 +20,7 @@ export function generateUpstreams(api: OpenApi3Spec, tags: string[]) {
 
   const upstream: DCUpstream = {
     ...upstreamDefaults,
-    name: `${getName(api)}.upstream`,
+    name: appendUpstreamName(getName(api)),
     targets: [],
     tags,
   };
@@ -39,3 +39,5 @@ export function generateUpstreams(api: OpenApi3Spec, tags: string[]) {
 
   return [upstream];
 }
+
+export const appendUpstreamName = (name: string) => `${name}.upstream`;
